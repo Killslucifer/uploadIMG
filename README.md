@@ -1,17 +1,22 @@
 uploadIMG
+========================
 The project including IMG upload/preview, and get IMG URL from zip
 
 Install
+-----------------------------
 npm install express
 npm install --save express-fileupload
 npm install body-parser
 npm install unzip
 
 Usage
+-----------------------------
 Allow user to upload single image;
 Allow user to upload a zip file and get a list of images URL.
 
 Full Example
+--------------------------------
+```java
 const express = require('express');
 const fs = require('fs');
 const unzip = require('unzip');
@@ -82,8 +87,10 @@ myheader='<a href="'
         console.log ( mider );
     });
 });
-
+```
 Your HTML file upload form:
+--------------------------
+```java
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,5 +108,5 @@ Your HTML file upload form:
     </form>
 </body>
 </html>
-
+```
 
