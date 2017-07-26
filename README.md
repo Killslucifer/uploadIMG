@@ -1,105 +1,48 @@
-uploadIMG
-The project including IMG upload/preview, and get IMG URL from zip
+Project Title
 
-Install
-npm install express
-npm install --save express-fileupload
-npm install body-parser
-npm install unzip
+One Paragraph of project description goes here
 
-Usage
-Allow user to upload single image;
-Allow user to upload a zip file and get a list of images URL.
+Getting Started
 
-Full Example
-const express = require('express');
-const fs = require('fs');
-const unzip = require('unzip');
-const fileUpload = require('express-fileupload');
-const app = express();
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-// default options
-app.use(fileUpload());
+Prerequisites
 
-var path    = require("path");
-var ip = require("ip");
-var port = 4000;
-var bodyParser = require('body-parser');
+What things you need to install the software and how to install them
 
-app.get('/',function(req,res){
-    res.sendFile(path.join(__dirname+'/index.html'));
-});
+Give examples
+Installing
 
-app.get('/show',function(req,res){
-    console.log(req.query.picName);
+A step by step series of examples that tell you have to get a development env running
 
-        res.sendFile(path.join(__dirname+'/public/'+req.query.picName));
+Say what the step will be
 
-    //__dirname : It will resolve to your project folder.
-});
+Give the example
+And repeat
 
-// app.get('/unzip',function(req,res){
-//     fs.createReadStream('./testIMG.zip')
-//         .pipe(unzip.Parse())
-//         .on('entry', function (entry) {
-//             var fileName = entry.path;
-//             var type = entry.Directory; // 'Directory' or 'File'
-//             var size = entry.size;
-//             console.log(fileName);
-//             // res.send(fileName);
-//             // res.send(fileName);
-//             // if (fileName === "this IS the file I'm looking for") {
-//             //     entry.pipe(fs.createWriteStream('output/path'));
-//             // } else {
-//             //     entry.autodrain();
-//             // }
-//         });
-//
-// });
+until finished
+End with an example of getting some data out of the system or using it for a little demo
+
+Running the tests
+
+Explain how to run the automated tests for this system
+
+Break down into end to end tests
+
+Explain what these tests test and why
+
+Give an example
+And coding style tests
+
+Explain what these tests test and why
+
+Give an example
+Deployment
 
 
 
-app.listen(port, function () {
-    console.log('Example app listening on port '+port+' !')
-})
+Authors
 
-app.post('/upload', function(req, res) {
-    if (!req.files)
-        return res.status(400).send('No files were uploaded.');
-
-    // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-    sampleFile = req.files.sampleFile;
-
-    // Use the mv() method to place the file somewhere on your server
-    sampleFile.mv('./public/'+ sampleFile.name, function(err) {
-        if (err)
-            return res.status(500).send(err);
-myheader='<a href="'
-        mider='http://'+ip.address()+':'+port+'/show?picName='+sampleFile.name;
-        endd='">Visit<\/a>'
-        res.send('File uploaded!'+myheader+mider+endd);
-
-        console.log ( mider );
-    });
-});
-
-Your HTML file upload form:
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <form ref='uploadForm'
-          id='uploadForm'
-          action='http://localhost:4000/upload'
-          method='post'
-          encType="multipart/form-data">
-        <input type="file" name="sampleFile" />
-        <input type='submit' value='Upload!' />
-    </form>
-</body>
-</html>
+Daniel Shi
 
 
